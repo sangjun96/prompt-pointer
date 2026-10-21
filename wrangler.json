@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "prompt-pointer",
+  "compatibility_date": "2026-10-19",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    {
+      "pattern": "promptpointer.dev",
+      "custom_domain": true
+    }
+  ]
+}
