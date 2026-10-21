@@ -1,6 +1,6 @@
 ---
 title: "Designing for the long game"
-publishedAt: "2026.04"
+publishedAt: "2026.04.12"
 summary: "Longevity in software interfaces and the subtle art of enduring aesthetic choices."
 draft: false
 ---

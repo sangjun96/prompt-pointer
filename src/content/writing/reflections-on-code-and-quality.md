@@ -1,6 +1,6 @@
 ---
 title: "Reflections on code and quality"
-publishedAt: "2025.12"
+publishedAt: "2025.12.05"
 summary: "On craft, readability, and the long-term cost of clever solutions."
 draft: false
 ---

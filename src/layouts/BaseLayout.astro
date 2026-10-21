@@ -8,8 +8,8 @@ interface Props {
 }
 
 const {
-  title = 'prompt & pointer — Thoughts on software craft, design, and systems.',
-  description = 'Personal blog and selected work on software craft, design, and systems.',
+  title = 'prompt & pointer',
+  description = 'Personal blog on software craft, design, and systems.',
 } = Astro.props;
 ---
 
@@ -35,8 +35,6 @@ const {
     />
   </head>
   <body>
-    <div class="site-shell">
-      <slot />
-    </div>
+    <slot />
   </body>
 </html>

@@ -1,6 +1,6 @@
 ---
 title: "Design patterns in collaborative software"
-publishedAt: "2026.08"
+publishedAt: "2026.08.24"
 summary: "An examination of conflict-free replicated data types and event-driven synchronization models."
 draft: false
 ---

@@ -1,6 +1,6 @@
 ---
 title: "The simplicity of stable systems"
-publishedAt: "2026.10"
+publishedAt: "2026.10.18"
 summary: "Exploring why simplicity remains the single most reliable foundation for durable software architecture."
 draft: false
 ---

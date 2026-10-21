@@ -1,53 +1,28 @@
 ---
 // src/pages/index.astro
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
 import WritingList from '../components/WritingList.astro';
-import WorkGrid from '../components/WorkGrid.astro';
 
-const articles = [
-  {
-    slug: 'the-simplicity-of-stable-systems',
-    title: 'The simplicity of stable systems',
-    date: '2026.10',
-  },
-  {
-    slug: 'design-patterns-in-collaborative-software',
-    title: 'Design patterns in collaborative software',
-    date: '2026.08',
-  },
-  {
-    slug: 'designing-for-the-long-game',
-    title: 'Designing for the long game',
-    date: '2026.04',
-  },
-  {
-    slug: 'reflections-on-code-and-quality',
-    title: 'Reflections on code and quality',
-    date: '2025.12',
-  },
-];
+const allPosts = await getCollection('writing', ({ data }) => !data.draft);
 
-const projects = [
-  {
-    title: 'Linear Sync',
-    description: 'Minimalist issue synchronization engine with deterministic conflict resolution.',
-    href: 'https://github.com',
-  },
-  {
-    title: 'Vercel SDK',
-    description: 'Lightweight zero-dependency client toolkit for edge deployment workflows.',
-    href: 'https://github.com',
-  },
-];
+const sortedPosts = allPosts.sort((a, b) => {
+  const dateA = a.data.publishedAt.replace(/\./g, '-');
+  const dateB = b.data.publishedAt.replace(/\./g, '-');
+  return new Date(dateB).getTime() - new Date(dateA).getTime();
+});
+
+const articles = sortedPosts.map((post) => ({
+  slug: post.slug || post.id.replace(/\.[^/.]+$/, ''),
+  title: post.data.title,
+  date: post.data.publishedAt,
+}));
 ---
 
 <BaseLayout>
   <Header />
   <main class="main-column">
-    <Hero />
     <WritingList items={articles} />
-    <WorkGrid projects={projects} />
   </main>
 </BaseLayout>

@@ -17,7 +17,6 @@
   --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, monospace;
 
   /* Layout */
-  --shell-max-width: 1024px;
   --content-max-width: 680px;
 }
 
@@ -36,12 +35,26 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
   min-height: 100vh;
   background-color: var(--bg-canvas);
-  padding: 2.5rem 1.5rem 5rem;
+  color: var(--text-primary);
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 5rem;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
 }
 
 a {
@@ -49,23 +62,12 @@ a {
   text-decoration: none;
 }
 
-.site-shell {
-  max-width: var(--shell-max-width);
-  margin: 0 auto;
-  background-color: var(--bg-canvas);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  min-height: calc(100vh - 5rem);
-}
-
 .main-column {
-  max-width: var(--content-max-width);
-  margin: 0 auto;
-  padding: 5.5rem 1.5rem 6rem;
+  width: 100%;
 }
 
 .section-block {
-  margin-top: 4rem;
+  margin-top: 2.5rem;
 }
 
 .section-label {
@@ -77,17 +79,23 @@ a {
   margin-bottom: 0.75rem;
 }
 
+/* Tablet */
+@media (max-width: 768px) {
+  body {
+    padding: 2.75rem 1.5rem 4rem;
+  }
+}
+
+/* Mobile */
 @media (max-width: 640px) {
   body {
-    padding: 0;
+    padding: 2rem 1.25rem 3.5rem;
   }
+}
 
-  .site-shell {
-    border: none;
-    border-radius: 0;
-  }
-
-  .main-column {
-    padding: 3.5rem 1.25rem 4rem;
+/* Small Mobile */
+@media (max-width: 380px) {
+  body {
+    padding: 1.75rem 1rem 3rem;
   }
 }

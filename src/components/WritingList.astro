@@ -13,9 +13,7 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<section id="writing" class="section-block">
-  <h2 class="section-label">WRITING</h2>
-
+<section id="writing">
   <ul class="writing-list">
     {
       items.map((post) => (
@@ -41,8 +39,11 @@ const { items } = Astro.props;
     transition: opacity 0.2s ease;
   }
 
-  .writing-list:hover .writing-row:not(:hover) {
-    opacity: 0.45;
+  /* Only apply hover-dimming on devices that actually support hover (mouse/pointer) */
+  @media (hover: hover) {
+    .writing-list:hover .writing-row:not(:hover) {
+      opacity: 0.45;
+    }
   }
 
   .writing-link {
@@ -51,6 +52,19 @@ const { items } = Astro.props;
     justify-content: space-between;
     gap: 1.5rem;
     padding: 1.125rem 0;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: color 0.15s ease;
+  }
+
+  .writing-link:active {
+    opacity: 0.7;
+  }
+
+  .writing-link:focus-visible {
+    outline: 2px solid var(--border-hover);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 
   .writing-title {
@@ -59,6 +73,9 @@ const { items } = Astro.props;
     line-height: 1.5;
     letter-spacing: -0.01em;
     color: var(--text-primary);
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-wrap: break-word;
   }
 
   .writing-date {
@@ -67,20 +84,58 @@ const { items } = Astro.props;
     color: var(--text-muted);
     font-variant-numeric: tabular-nums;
     flex-shrink: 0;
+    white-space: nowrap;
+    text-align: right;
   }
 
-  @media (max-width: 640px) {
+  /* Tablet */
+  @media (max-width: 768px) {
     .writing-link {
       padding: 1rem 0;
+      gap: 1.25rem;
+    }
+
+    .writing-title {
+      font-size: 1rem;
+      line-height: 1.48;
+    }
+
+    .writing-date {
+      font-size: 0.84375rem;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .writing-link {
+      padding: 0.9375rem 0;
       gap: 1rem;
     }
 
     .writing-title {
-      font-size: 0.96875rem;
+      font-size: 0.9375rem;
+      line-height: 1.45;
     }
 
     .writing-date {
       font-size: 0.8125rem;
+    }
+  }
+
+  /* Small Mobile */
+  @media (max-width: 420px) {
+    .writing-link {
+      padding: 0.875rem 0;
+      gap: 0.75rem;
+    }
+
+    .writing-title {
+      font-size: 0.875rem;
+      line-height: 1.4;
+    }
+
+    .writing-date {
+      font-size: 0.75rem;
     }
   }
 </style>
