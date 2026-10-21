@@ -1,0 +1,72 @@
+---
+// src/components/WorkGrid.astro
+export interface WorkItem {
+  title: string;
+  description: string;
+  href: string;
+}
+
+interface Props {
+  projects: WorkItem[];
+}
+
+const { projects } = Astro.props;
+---
+
+<section id="work" class="section-block">
+  <h2 class="section-label">WORK</h2>
+
+  <div class="work-grid">
+    {
+      projects.map((project) => (
+        <a href={project.href} class="work-card" target="_blank" rel="noopener noreferrer">
+          <h3 class="work-title">{project.title}</h3>
+          <p class="work-description">{project.description}</p>
+        </a>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 0.875rem;
+  }
+
+  .work-card {
+    display: block;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 1.25rem 1.375rem;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .work-card:hover {
+    background-color: var(--bg-surface-hover);
+    border-color: var(--border-hover);
+  }
+
+  .work-title {
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin-bottom: 0.45rem;
+  }
+
+  .work-description {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 640px) {
+    .work-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

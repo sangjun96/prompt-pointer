@@ -1,0 +1,54 @@
+---
+// src/pages/about.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+---
+
+<BaseLayout title="About — prompt & pointer" description="About prompt & pointer.">
+  <Header />
+  <main class="main-column">
+    <section class="about-section">
+      <h1 class="about-title">About</h1>
+      <p class="about-lead">
+        prompt &amp; pointer is a space for disciplined thoughts on software craft, system architecture, and product design.
+      </p>
+      <div class="about-body">
+        <p>
+          The name reflects the intersection of modern AI prompt engineering and classical pointer arithmetic (*ptr) — marrying high-level intent with foundational systems thinking.
+        </p>
+        <p>
+          We value zero-gradient clarity, flat surfaces, predictable interfaces, and software built for endurance over ephemera.
+        </p>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .about-section {
+    max-width: 100%;
+  }
+
+  .about-title {
+    font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+    font-weight: 500;
+    line-height: 1.28;
+    letter-spacing: -0.025em;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .about-lead {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+  }
+
+  .about-body p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+  }
+</style>

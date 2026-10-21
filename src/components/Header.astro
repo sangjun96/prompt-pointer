@@ -1,0 +1,131 @@
+---
+// src/components/Header.astro
+const pathname = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <a href="/" class="brand-link" aria-label="prompt & pointer home">
+    <svg
+      class="brand-mark"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <!-- 8-Ray Symmetrical Rounded Asterisk (*) -->
+      <line x1="12" y1="2.5" x2="12" y2="21.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" />
+      <line x1="2.5" y1="12" x2="21.5" y2="12" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" />
+      <line x1="5.28" y1="5.28" x2="18.72" y2="18.72" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" />
+      <line x1="18.72" y1="5.28" x2="5.28" y2="18.72" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" />
+    </svg>
+    <span class="brand-name">
+      prompt <span class="brand-amp">&amp;</span> pointer
+    </span>
+  </a>
+
+  <nav class="site-nav" aria-label="Primary Navigation">
+    <a href="/#writing" class:list={['nav-link', { active: pathname === '/' }]}>Writing</a>
+    <a href="/#work" class="nav-link">Work</a>
+    <a href="/about" class:list={['nav-link', { active: pathname.startsWith('/about') }]}>About</a>
+    <button type="button" class="cmd-trigger" aria-label="Quick Search (Command + K)">
+      <span>⌘K</span>
+    </button>
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    height: 64px;
+    padding: 0 2rem;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    color: var(--text-primary);
+  }
+
+  .brand-mark {
+    flex-shrink: 0;
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .brand-link:hover .brand-mark {
+    transform: rotate(45deg);
+  }
+
+  .brand-name {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+
+  .brand-amp {
+    color: var(--text-muted);
+    font-weight: 400;
+    margin: 0 0.05em;
+  }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  .nav-link {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    transition: color 0.15s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--text-primary);
+  }
+
+  .nav-link.active {
+    font-weight: 500;
+  }
+
+  .cmd-trigger {
+    background-color: var(--bg-surface);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 0.25rem 0.55rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .cmd-trigger:hover {
+    color: var(--text-primary);
+    border-color: var(--border-hover);
+    background-color: var(--bg-surface-hover);
+  }
+
+  @media (max-width: 640px) {
+    .site-header {
+      padding: 0 1.25rem;
+    }
+
+    .brand-name {
+      font-size: 0.875rem;
+    }
+
+    .site-nav {
+      gap: 1.125rem;
+    }
+  }
+</style>
