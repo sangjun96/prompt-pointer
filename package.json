@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "generate:icons": "node scripts/generate-pwa-icons.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "deploy": "astro build && wrangler deploy"
