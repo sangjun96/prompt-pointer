@@ -9,9 +9,14 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "astro build && cf deploy"
   },
   "dependencies": {
     "astro": "^7.4.1"
+  },
+  "devDependencies": {
+    "@astrojs/cloudflare": "^14.4.1",
+    "cf": "^1.0.0-beta.20"
   }
 }

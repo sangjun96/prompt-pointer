@@ -1,7 +1,7 @@
 ---
-title: "Design patterns in collaborative software"
-publishedAt: "2026.08.24"
-summary: "An examination of conflict-free replicated data types and event-driven synchronization models."
+title: "this is test post"
+publishedAt: "2026.10.21"
+summary: "test post for design check."
 draft: false
 ---
 
